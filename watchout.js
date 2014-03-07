@@ -7,6 +7,34 @@ var svg = d3.select("body").append("svg")
 
 var enemies = d3.range(10);
 
+var player = [{
+  x: width / 2,
+  y: height / 2
+}];
+
+var init = function(data){
+  var good = svg.selectAll("circle")
+    .data(data, function(d){return d;});
+
+  good.enter().append('circle')
+    .attr('r', function (){
+      return 15;
+    })
+    .attr('cx', function(d){
+      return d.x;
+    })
+    .attr('cy', function(d){
+      return d.y;
+    })
+    .style("fill", "red")
+    .call(d3.behavior.drag()
+      .origin(function(d) { return d; })
+      .on("drag", function(d) {
+        d.x = d3.event.x;
+        d.y = d3.event.y;
+        d3.select(this).attr("cx", d.x).attr("cy", d.y);
+      }));
+};
 
 var move = function(data){
   var bad = svg.selectAll("circle")
@@ -39,6 +67,9 @@ var move = function(data){
 
 
 };
+
+init(player);
+move(enemies);
 
 setInterval(function(){
   move(enemies);
