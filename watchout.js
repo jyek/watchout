@@ -1,11 +1,14 @@
 var width = 960;
 var height = 500;
+var collisions = 0;
+var currentScore = 0;
+var highScore = 0;
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-var numEnemies = 4;
+var numEnemies = 10;
 var enemies = [];
 
 for(var i = 0; i < numEnemies; i++){
@@ -79,6 +82,22 @@ var distance = function(x1,y1,x2,y2){
   return Math.sqrt(Math.pow(x1 - x2,2) + Math.pow(y1 - y2, 2));
 };
 
+var gotHit = function(){
+  if(collisions === 3){
+    collisions = 0;
+    d3.select('.collisions span').text(collisions);
+    if(currentScore > highScore){
+      highScore = currentScore;
+      d3.select('.highScore span').text(highScore);
+    }
+    currentScore = 0;
+    d3.select('.currentScore span').text(currentScore);
+  }else{
+    currentScore = Math.round(currentScore * 0.7);
+    d3.select('.currentScore span').text(currentScore);
+  }
+};
+
 var checkCollision = function(){
   var hero = d3.select(".hero");
   var enemyPosition = d3.selectAll(".enemy");
@@ -93,9 +112,10 @@ var checkCollision = function(){
       // in contact
 
       if(d.t === false){
-        //collisions +=1
+        collisions ++;
+        d3.select('.collisions span').text(collisions);
         d.t = true;
-      console.log("COLLISION!!");
+        gotHit();       
       }
 
     }else{
@@ -111,6 +131,8 @@ move(enemies);
 
 setInterval (function(){
   checkCollision();
+  currentScore++;
+  d3.select('.currentScore span').text(currentScore);
 },10);
 
 setInterval(function(){
