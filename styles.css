@@ -1,5 +1,26 @@
-/* your beautiful css styling goes here! */
+body{
+  font-family: Revalia;
+  font-size: 2em;
+}
+.scoreboard {
+  width: 100%;
+  margin: 0 auto;
+}
+.scoreboard div{
+  float: left;
+  padding: 10px;
+  padding-left: 2%;
+  color: #FFF;
+  background-color: #194BF4;
+}
 
-/* Note: an asteroid image is included in this repo. 
-Feel free to use it if you like. */
+.board{
+  padding-right: 20px;
+}
 
+/*
+7D799A
+11437D
+4947F0
+194BF4
+*/

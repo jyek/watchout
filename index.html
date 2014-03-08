@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href='http://fonts.googleapis.com/css?family=Revalia' rel='stylesheet' type='text/css'>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel='stylesheet' href='styles.css'>
   </head>
   <body>
     <div class="scoreboard">
-      <div class="highScore">High score: <span>0</span></div>
-      <div class="currentScore">Current score: <span>0</span></div>
-      <div class="collisions">Collisions: <span>0</span></div>
+      <div class="highScore col-md-4"><i class="fa board fa-thumbs-up"></i>High score: <span>0</span></div>
+      <div class="currentScore col-md-4"><i class="fa board fa-user"></i>Current score: <span>0</span></div>
+      <div class="collisions col-md-4"><i class="fa board fa-flash"></i>Collisions: <span>0</span></div>
     </div>
     <script src="d3.js" charset="utf-8"></script>
     <script src="watchout.js"></script>

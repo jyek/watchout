@@ -1,5 +1,5 @@
-var width = 960;
-var height = 500;
+var width = window.innerWidth;
+var height = window.innerHeight;
 var collisions = 0;
 var currentScore = 0;
 var highScore = 0;
